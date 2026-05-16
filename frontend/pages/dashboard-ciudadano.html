@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PQRS</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/petitions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand"><span>📋</span> PQRS</a>
+            <ul class="navbar-menu">
+                <li><a href="#" class="active">Inicio</a></li>
+                <li><a href="crear-peticion.html">Nueva Petición</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <button class="btn btn-primary btn-sm" onclick="window.location.href='crear-peticion.html'">
+                    <i class="fas fa-plus"></i> Nueva Petición
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserDropdown()">
+                        <span id="userInitial">R</span>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="user-dropdown-item" onclick="window.location.href='perfil.html'">
+                            <i class="fas fa-user"></i> Mi Perfil
+                        </div>
+                        <div class="user-dropdown-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <div class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Mis Peticiones</h1>
+                    <p class="page-subtitle" id="saludo">Gestiona tus peticiones, quejas y sugerencias</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-icon primary"><i class="fas fa-file-alt"></i></div>
+                    <div class="stat-card-label">Total</div>
+                    <div class="stat-card-value" id="statTotal">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon success"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-card-label">Resueltas</div>
+                    <div class="stat-card-value" id="statResueltas">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon warning"><i class="fas fa-user-check"></i></div>
+                    <div class="stat-card-label">Asignadas</div>
+                    <div class="stat-card-value" id="statAsignadas">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon primary"><i class="fas fa-clock"></i></div>
+                    <div class="stat-card-label">Pendientes</div>
+                    <div class="stat-card-value" id="statPendientes">0</div>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-group" style="flex:1;">
+                    <label>Buscar</label>
+                    <div class="search-input-group">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar por descripción...">
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Estado</label>
+                    <select id="statusFilter">
+                        <option value="">Todos</option>
+                        <option value="PENDIENTE">Pendiente</option>
+                        <option value="ASIGNADA">Asignada</option>
+                        <option value="RESUELTA">Resuelta</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Tipo</label>
+                    <select id="typeFilter">
+                        <option value="">Todos</option>
+                        <option value="PETICION">Petición</option>
+                        <option value="QUEJA">Queja</option>
+                        <option value="RECLAMO">Reclamo</option>
+                        <option value="SUGERENCIA">Sugerencia</option>
+                    </select>
+                </div>
+                <div class="filter-actions">
+                    <button class="filter-reset" onclick="limpiarFiltros()">
+                        <i class="fas fa-redo"></i> Limpiar
+                    </button>
+                </div>
+            </div>
+
+            <div id="alertBox" style="display:none;"></div>
+            <div id="petitionsList"></div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard-ciudadano.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - PQRS</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/petitions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a id="navInicio" href="dashboard-ciudadano.html" class="navbar-brand"><span>📋</span> PQRS</a>
+            <ul class="navbar-menu">
+                <li><a id="navLink" href="dashboard-ciudadano.html">Inicio</a></li>
+                <li><a href="#" class="active">Mi Perfil</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserDropdown()">
+                        <span id="userInitial">U</span>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="user-dropdown-item" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="layout">
+        <div class="main-content">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Mi Perfil</h1>
+                    <p class="page-subtitle">Información de tu cuenta</p>
+                </div>
+            </div>
+
+            <div id="alertBox" style="display:none;"></div>
+
+            <div class="grid grid-3" style="gap:30px;">
+                <!-- Columna izquierda: resumen -->
+                <div class="card">
+                    <div class="card-body" style="text-align:center;">
+                        <div id="avatarGrande" style="width:100px; height:100px; margin:0 auto 20px; border-radius:50%; background:linear-gradient(135deg, var(--primary), var(--secondary)); color:white; display:flex; align-items:center; justify-content:center; font-size:2.5rem; font-weight:700;">
+                            U
+                        </div>
+                        <h3 id="nombreCompleto" style="margin:8px 0;">--</h3>
+                        <p id="rolLabel" style="color:var(--gray-500); margin-bottom:20px;">--</p>
+                        <p style="color:var(--gray-600); font-size:0.9rem;" id="correoLabel">--</p>
+
+                        <div style="border-top:1px solid var(--gray-200); padding-top:20px; margin-top:20px;">
+                            <div style="display:flex; justify-content:space-around;">
+                                <div>
+                                    <div style="font-size:1.75rem; font-weight:700; color:var(--primary);" id="statTotal">-</div>
+                                    <div style="color:var(--gray-500); font-size:0.875rem;">Total</div>
+                                </div>
+                                <div>
+                                    <div style="font-size:1.75rem; font-weight:700; color:var(--success);" id="statResueltas">-</div>
+                                    <div style="color:var(--gray-500); font-size:0.875rem;">Resueltas</div>
+                                </div>
+                                <div>
+                                    <div style="font-size:1.75rem; font-weight:700; color:var(--warning);" id="statPendientes">-</div>
+                                    <div style="color:var(--gray-500); font-size:0.875rem;">Pendientes</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: datos -->
+                <div style="grid-column:2 / 4;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="margin:0;">Datos de la Cuenta</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" id="campoNombre" disabled style="background:var(--gray-100);">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Correo</label>
+                                    <input type="email" id="campoCorreo" disabled style="background:var(--gray-100);">
+                                </div>
+                                <div class="form-group">
+                                    <label>Rol</label>
+                                    <input type="text" id="campoRol" disabled style="background:var(--gray-100);">
+                                </div>
+                            </div>
+                            <div class="alert alert-info" style="margin-top:20px;">
+                                <i class="fas fa-info-circle"></i>
+                                <div>Para modificar tus datos, contacta a un administrador del sistema.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/perfil.js"></script>
+</body>
+</html>
